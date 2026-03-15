@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Event Registration Page</title>
+
+<style>
+body{
+font-family: Arial, sans-serif;
+margin:20px;
+background-color:#f4f4f4;
+}
+
+h1{
+text-align:center;
+color:#333;
+}
+
+.container{
+background:white;
+padding:20px;
+border-radius:10px;
+width:80%;
+margin:auto;
+}
+
+fieldset{
+margin-bottom:15px;
+padding:10px;
+}
+
+legend{
+font-weight:bold;
+}
+
+label{
+display:block;
+margin-top:10px;
+}
+
+input, select, textarea{
+width:100%;
+padding:8px;
+margin-top:5px;
+}
+
+button{
+margin-top:10px;
+padding:10px 15px;
+border:none;
+background:#007BFF;
+color:white;
+cursor:pointer;
+}
+
+button:hover{
+background:#0056b3;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:20px;
+}
+
+table, th, td{
+border:1px solid black;
+padding:8px;
+text-align:center;
+}
+
+footer{
+margin-top:30px;
+text-align:center;
+background:#eee;
+padding:10px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Web Development Workshop</h1>
+
+<p>This workshop helps students learn the basics of HTML, CSS and JavaScript for building modern websites.</p>
+
+<h3>Event Information</h3>
+
+<ul>
+<li>Date: 20 March 2026</li>
+<li>Time: 10:00 AM – 1:00 PM</li>
+<li>Venue: Computer Lab – Block A</li>
+<li>Organizer: Department of Computer Science</li>
+</ul>
+
+<form onsubmit="registerParticipant(event)">
+
+<fieldset>
+<legend>Personal Information</legend>
+
+<label>Name</label>
+<input type="text" id="name" required>
+
+<label>Email</label>
+<input type="email" id="email" required>
+
+<label>Phone Number</label>
+<input type="tel" id="phone" required>
+
+<label>Date of Birth</label>
+<input type="date" id="dob">
+
+<label>Gender</label>
+<input type="radio" name="gender"> Male
+<input type="radio" name="gender"> Female
+</fieldset>
+
+
+<fieldset>
+<legend>Event Selection</legend>
+
+<label>Select Event</label>
+<select id="event">
+<option>Web Development Workshop</option>
+<option>AI Seminar</option>
+<option>Cyber Security Talk</option>
+</select>
+
+<label>Mode of Participation</label>
+<input type="radio" name="mode" value="Online"> Online
+<input type="radio" name="mode" value="Offline"> Offline
+
+</fieldset>
+
+
+<fieldset>
+<legend>Additional Details</legend>
+
+<label>College / Company Name</label>
+<input type="text">
+
+<label>Upload ID Proof</label>
+<input type="file">
+
+<label>Comments / Expectations</label>
+<textarea rows="4"></textarea>
+
+</fieldset>
+
+<label>
+<input type="checkbox" required>
+I confirm that the above details are correct.
+</label>
+
+<br>
+
+<button type="submit">Submit</button>
+<button type="reset">Reset</button>
+
+</form>
+
+<h3>Registered Participants</h3>
+
+<table id="participantsTable">
+
+<tr>
+<th>Name</th>
+<th>Email</th>
+<th>Phone</th>
+<th>Event</th>
+<th>Mode</th>
+</tr>
+
+<tr>
+<td>XYZ</td>
+<td>xyz@gmail.com</td>
+<td>9876543210</td>
+<td>Web Development Workshop</td>
+<td>Offline</td>
+</tr>
+
+</table>
+
+<footer>
+
+<p>Contact Email: events@abccollege.edu</p>
+<p>Help Desk Number: +91 94444 12345</p>
+<p>© 2026 Department of Computer Science, ABC Engineering College</p>
+
+</footer>
+
+</div>
+
+<script>
+
+function registerParticipant(event){
+
+event.preventDefault();
+
+let name=document.getElementById("name").value;
+let email=document.getElementById("email").value;
+let phone=document.getElementById("phone").value;
+let eventName=document.getElementById("event").value;
+
+let mode=document.querySelector('input[name="mode"]:checked');
+
+if(mode){
+mode=mode.value;
+}else{
+mode="Not Selected";
+}
+
+let table=document.getElementById("participantsTable");
+
+let row=table.insertRow();
+
+row.insertCell(0).innerHTML=name;
+row.insertCell(1).innerHTML=email;
+row.insertCell(2).innerHTML=phone;
+row.insertCell(3).innerHTML=eventName;
+row.insertCell(4).innerHTML=mode;
+
+alert("Registration Successful!");
+
+}
+
+</script>
+
+</body>
+</html>
